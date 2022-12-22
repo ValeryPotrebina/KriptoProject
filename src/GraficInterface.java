@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 //todo когда закрываешь, чтобы спросили уверена ли я.
 //todo картинка на задний фон
-//
 public class GraficInterface extends JFrame {
     private static final int WIDTH = 540;
     private static final int HEIGHT = 400;
