@@ -1,12 +1,12 @@
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 
 public class Encryption {
     public static final String ALP = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-    public static final String EXTRA_SUMB = "!?,.;:\"' ";
+    public static final String EXTRA_SUMB = ";:\"', .!?";
     public static final String RUSSIAN_ALPHABET = ALP + ALP.toUpperCase() + EXTRA_SUMB;
-    public static final String PATH = "c:\\1\\2.txt";
     public static final int COUNT_LETTERS = RUSSIAN_ALPHABET.length();
 
 
@@ -25,6 +25,7 @@ public class Encryption {
             textArray[i] = (char) letter;
             i++;
         }
+        textArray = Arrays.copyOfRange(textArray, 0, i);
         int oldIndex;
         int newIndex;
         StringBuilder result = new StringBuilder();
@@ -41,4 +42,16 @@ public class Encryption {
         return result.toString();
     }
 
+    public static String alphabetEncrypt(int key) throws IOException {
+        char[] textArray = RUSSIAN_ALPHABET.toCharArray(); //<-todo исправить
+        int oldIndex;
+        int newIndex;
+        StringBuilder result = new StringBuilder();
+        for (char l : textArray) {
+            oldIndex = RUSSIAN_ALPHABET.indexOf(l);
+            newIndex = (oldIndex + key) % COUNT_LETTERS;
+            result.append(RUSSIAN_ALPHABET.charAt(newIndex));
+        }
+        return result.toString();
+    }
 }

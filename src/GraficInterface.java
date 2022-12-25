@@ -62,8 +62,8 @@ public class GraficInterface extends JFrame {
                     path = filePicker.getSelectedFilePath();
                     //path = String.valueOf(textField1.getText());
                     key = Integer.parseInt(String.valueOf(textField2.getText()));
-                    String filePathEncryption = NEEBY.sendEncryptMessage(Encryption.messageEncrypt(key, path));
-                    String filePathDecoding = NEEBY.sendDecipherMessage(Decoding.messageDecipher(key, filePathEncryption));
+                    String filePathEncryption = SendingFiles.sendEncryptMessage(Encryption.messageEncrypt(key, path));
+                    String filePathDecoding = SendingFiles.sendDecipherMessage(Decoding.messageDecipher(key, filePathEncryption));
                     result1.setText("Encrypted message is in dir - " + filePathEncryption);
                     result2.setText("Decoded message is in dir " + filePathDecoding);         //ошибка
                 } catch (FileNotFoundException e1) {

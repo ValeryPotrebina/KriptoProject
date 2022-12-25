@@ -10,8 +10,10 @@ public class Boba {
         String path = scanner.nextLine();
         System.out.println("Введите ключ: ");
         int key = scanner.nextInt();
-        String filePathEncryption = NEEBY.sendEncryptMessage(Encryption.messageEncrypt(key, path));
-        String filePathDecoding = NEEBY.sendDecipherMessage(Decoding.messageDecipher(key, filePathEncryption)); //ошибка
-       // Decoding.sendDecipherMessage(Decoding.messageDecipher(Encryption.COUNT_LETTERS - (key % Encryption.COUNT_LETTERS), Decoding.PATH));
+        String filePathEncryption = SendingFiles.sendEncryptMessage(Encryption.messageEncrypt(key, path));
+        String filePathDecoding = SendingFiles.sendDecipherMessage(Decoding.messageDecipher(key, filePathEncryption)); //ошибка
+
+
+        //Decoding.sendDecipherMessage(Decoding.messageDecipher(Encryption.COUNT_LETTERS - (key % Encryption.COUNT_LETTERS), Decoding.PATH));
     }
 }
