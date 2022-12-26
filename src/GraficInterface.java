@@ -62,7 +62,7 @@ public class GraficInterface extends JFrame {
                     path = filePicker.getSelectedFilePath();
                     //path = String.valueOf(textField1.getText());
                     key = Integer.parseInt(String.valueOf(textField2.getText()));
-                    String filePathEncryption = SendingFiles.sendEncryptMessage(Encryption.messageEncrypt(key, path));
+                    String filePathEncryption = SendingFiles.sendEncryptMessage(Encryption.messageEncrypt(key, Encryption.read(path)));
                     String filePathDecoding = SendingFiles.sendDecipherMessage(Decoding.messageDecipher(key, filePathEncryption));
                     result1.setText("Encrypted message is in dir - " + filePathEncryption);
                     result2.setText("Decoded message is in dir " + filePathDecoding);         //ошибка

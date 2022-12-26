@@ -4,35 +4,42 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class FilesAndDirectories {
-    public static final String START_PATH = "c:\\resultDirectory";
-    public static String createDirectory(){
+    public static final String START_PATH = "c:\\resDir";
+
+    public static String makeDirName(){
         Date dateNow = new Date();
-        SimpleDateFormat formatForDateNow = new SimpleDateFormat("yy.MM.dd_HH.mm.ss");
+        SimpleDateFormat formatForDateNow = new SimpleDateFormat("ddMMM_HH.mm.ss", Locale.ENGLISH);
         String date = formatForDateNow.format(dateNow);
-        String directoryName = START_PATH.concat(date);
+        return START_PATH.concat(date);
+    }
+
+    public static String createDirectory(){
+        String directoryName = makeDirName();
         Path path = Paths.get(directoryName);
         if (!Files.exists(path)){
             try {
                 Files.createDirectory(path);
+                System.out.println("New Directory created " + directoryName);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            //сделать в свинге
-            System.out.println("New Directory created " + directoryName);
         } else {
-            //сделать в свинге
             System.out.println("Directory already exists");
         }
         return directoryName;
     }
 
-    public static String createFile(String str){
+    public static String makeFileName(String str){
         Date dateNow = new Date();
-        SimpleDateFormat formatForDateNow = new SimpleDateFormat("yy.MM.dd_HH.mm.ss.SSS");
+        SimpleDateFormat formatForDateNow = new SimpleDateFormat("HH.mm.ss.SSS", Locale.ENGLISH);
         String date = formatForDateNow.format(dateNow);
-        String fileName = str + "\\resultFile" + date + ".txt";
+        return str + "\\resFile" + date + ".txt";
+    }
+    public static String createFile(String str){
+        String fileName = makeFileName(str);
         Path path = Paths.get(fileName);
         if (!Files.exists(path)){
             try {

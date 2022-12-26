@@ -9,23 +9,21 @@ public class Encryption {
     public static final String RUSSIAN_ALPHABET = ALP + ALP.toUpperCase() + EXTRA_SUMB;
     public static final int COUNT_LETTERS = RUSSIAN_ALPHABET.length();
 
-
-    //todo отдельный метод где будут спрашивать путь
-    //todo сделать вывод ошибки, если путь введен неверное или файл не найден
-
-
-    public static String messageEncrypt(int key, String path) throws IOException {
-        //todo сделать все в файловой системе
-        // зачем сохраняешь все в строку а потом выводишь в другой файл? Можно сразу шифроватьт и отправлять в файл. Исправить!
+    public static char[] read(String path) throws IOException {
         FileInputStream fileInputStream = new FileInputStream(path);
         BufferedReader reader = new BufferedReader(new InputStreamReader(fileInputStream, StandardCharsets.UTF_8));
-        char[] textArray = new char[fileInputStream.available()]; //<-todo исправить
+        char[] textArray = new char[fileInputStream.available()];
         int letter, i = 0;
         while ((letter = reader.read()) != -1){
             textArray[i] = (char) letter;
             i++;
         }
         textArray = Arrays.copyOfRange(textArray, 0, i);
+        return textArray;
+    }
+
+
+    public static String messageEncrypt(int key, char[] textArray) {
         int oldIndex;
         int newIndex;
         StringBuilder result = new StringBuilder();
@@ -42,7 +40,7 @@ public class Encryption {
         return result.toString();
     }
 
-    public static String alphabetEncrypt(int key) throws IOException {
+    public static String alphabetEncrypt(int key){
         char[] textArray = RUSSIAN_ALPHABET.toCharArray(); //<-todo исправить
         int oldIndex;
         int newIndex;
