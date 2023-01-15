@@ -38,8 +38,52 @@ public class FilesAndDirectories {
         String date = formatForDateNow.format(dateNow);
         return str + "\\resFile" + date + ".txt";
     }
+    public static String makeFileNameEncrypt(String str){
+       /* Date dateNow = new Date();
+        SimpleDateFormat formatForDateNow = new SimpleDateFormat("HH.mm.ss.SSS", Locale.ENGLISH);
+        String date = formatForDateNow.format(dateNow);
+        return str + "\\resFile" + date + ".txt";*/
+        return str + "\\Encrypt.txt" ;
+    }
+    public static String makeFileNameDecoded(String str){
+        /*Date dateNow = new Date();
+        SimpleDateFormat formatForDateNow = new SimpleDateFormat("HH.mm.ss.SSS", Locale.ENGLISH);
+        String date = formatForDateNow.format(dateNow);
+        return str + "\\resFile" + date + ".txt";*/
+        return str + "\\Decoded.txt" ;
+    }
     public static String createFile(String str){
         String fileName = makeFileName(str);
+        Path path = Paths.get(fileName);
+        if (!Files.exists(path)){
+            try {
+                Files.createFile(path);
+                System.out.println("New File created " + fileName);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("file already exists.");
+        }
+        return fileName;
+    }
+    public static String createFileEncrypted(String str){
+        String fileName = makeFileNameEncrypt(str);
+        Path path = Paths.get(fileName);
+        if (!Files.exists(path)){
+            try {
+                Files.createFile(path);
+                System.out.println("New File created " + fileName);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("file already exists.");
+        }
+        return fileName;
+    }
+    public static String createFileDecoded(String str){
+        String fileName = makeFileNameDecoded(str);
         Path path = Paths.get(fileName);
         if (!Files.exists(path)){
             try {

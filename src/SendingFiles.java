@@ -9,7 +9,7 @@ public class SendingFiles {
     static final String directoryPath = FilesAndDirectories.createDirectory();
 
     public static String sendEncryptMessage(String encodedMessage) throws IOException {
-        String filePathEncryption = FilesAndDirectories.createFile(directoryPath);
+        String filePathEncryption = FilesAndDirectories.createFileEncrypted(directoryPath);
         Path resultFile = Paths.get(filePathEncryption);
         BufferedWriter writer = new BufferedWriter(new FileWriter(resultFile.toFile()));
         char[] resultArray = encodedMessage.toCharArray();
@@ -20,7 +20,7 @@ public class SendingFiles {
     }
 
     public static String sendDecipherMessage(String decodingMessage) throws IOException {
-        String filePathDecoding = FilesAndDirectories.createFile(directoryPath);
+        String filePathDecoding = FilesAndDirectories.createFileDecoded(directoryPath);
         Path resultFile = Paths.get(filePathDecoding);
         BufferedWriter writer = new BufferedWriter(new FileWriter(resultFile.toFile()));
         char[] resultArray = decodingMessage.toCharArray();
