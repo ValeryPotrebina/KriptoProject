@@ -7,18 +7,15 @@ public class BruteForce extends TextAnalyz{
     private static final String SPACE_SEPARATION = " ";
     static ArrayList<Word> words;
 
-    public static void main(String[] args) throws IOException {
-
-    }
-
-    public static void bruteForce(String path) throws IOException {
+    static String str = " ";
+    public static String bruteForce(String path) throws IOException {
         for (int i = 0; i < Encryption.RUSSIAN_ALPHABET.length(); i++) {
             String text = Encryption.messageEncrypt(i, Encryption.read(path));
             if (checkIsWordsCorrect(text)){
-                SendingFiles.sendBruteForceMessage(text);
-                return;
+                str = SendingFiles.sendBruteForceMessage(text);
             }
         }
+        return str;
     }
 
     private static boolean checkIsWordsCorrect(String text){

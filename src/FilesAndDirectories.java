@@ -34,23 +34,21 @@ public class FilesAndDirectories {
 
     public static String makeFileName(String str){
         Date dateNow = new Date();
-        SimpleDateFormat formatForDateNow = new SimpleDateFormat("HH.mm.ss.SSS", Locale.ENGLISH);
+        SimpleDateFormat formatForDateNow = new SimpleDateFormat("SSS", Locale.ENGLISH);
         String date = formatForDateNow.format(dateNow);
-        return str + "\\resFile" + date + ".txt";
+        return str + "\\BF" + date + ".txt" ;
     }
     public static String makeFileNameEncrypt(String str){
-       /* Date dateNow = new Date();
-        SimpleDateFormat formatForDateNow = new SimpleDateFormat("HH.mm.ss.SSS", Locale.ENGLISH);
+        Date dateNow = new Date();
+        SimpleDateFormat formatForDateNow = new SimpleDateFormat("SSS", Locale.ENGLISH);
         String date = formatForDateNow.format(dateNow);
-        return str + "\\resFile" + date + ".txt";*/
-        return str + "\\Encrypt.txt" ;
+        return str + "\\Encrypt" + date + ".txt" ;
     }
     public static String makeFileNameDecoded(String str){
-        /*Date dateNow = new Date();
-        SimpleDateFormat formatForDateNow = new SimpleDateFormat("HH.mm.ss.SSS", Locale.ENGLISH);
+        Date dateNow = new Date();
+        SimpleDateFormat formatForDateNow = new SimpleDateFormat("SSS", Locale.ENGLISH);
         String date = formatForDateNow.format(dateNow);
-        return str + "\\resFile" + date + ".txt";*/
-        return str + "\\Decoded.txt" ;
+        return str + "\\Decoded" + date + ".txt" ;
     }
     public static String createFile(String str){
         String fileName = makeFileName(str);
