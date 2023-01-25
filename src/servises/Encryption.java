@@ -1,7 +1,11 @@
-import java.io.*;
+package servises;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-
 
 public class Encryption {
     public static final String ALP = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
@@ -14,7 +18,7 @@ public class Encryption {
         BufferedReader reader = new BufferedReader(new InputStreamReader(fileInputStream, StandardCharsets.UTF_8));
         char[] textArray = new char[fileInputStream.available()];
         int letter, i = 0;
-        while ((letter = reader.read()) != -1){
+        while ((letter = reader.read()) != -1) {
             textArray[i] = (char) letter;
             i++;
         }
@@ -29,26 +33,13 @@ public class Encryption {
         StringBuilder result = new StringBuilder();
         int countOfLetters = RUSSIAN_ALPHABET.length();
         for (char l : textArray) {
-            if (RUSSIAN_ALPHABET.indexOf(l) == -1){
+            if (RUSSIAN_ALPHABET.indexOf(l) == -1) {
                 result.append(l);
             } else {
                 oldIndex = RUSSIAN_ALPHABET.indexOf(l);
                 newIndex = (oldIndex + key) % countOfLetters;
                 result.append(RUSSIAN_ALPHABET.charAt(newIndex));
             }
-        }
-        return result.toString();
-    }
-
-    public static String alphabetEncrypt(int key){
-        char[] textArray = RUSSIAN_ALPHABET.toCharArray(); //<-todo исправить
-        int oldIndex;
-        int newIndex;
-        StringBuilder result = new StringBuilder();
-        for (char l : textArray) {
-            oldIndex = RUSSIAN_ALPHABET.indexOf(l);
-            newIndex = (oldIndex + key) % COUNT_LETTERS;
-            result.append(RUSSIAN_ALPHABET.charAt(newIndex));
         }
         return result.toString();
     }

@@ -1,13 +1,10 @@
-public class Word {
+package models;
 
+public class Sentence {
     String data;
 
-    public Word(String data){
+    public Sentence(String data) {
         this.data = data;
-    }
-
-    public int letterCounter(){
-        return data.length();
     }
 
     @Override

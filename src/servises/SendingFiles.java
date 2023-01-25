@@ -1,7 +1,8 @@
+package servises;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -40,5 +41,4 @@ public class SendingFiles {
         System.out.println("Ваш текст успешно зашифрован методом brute force и передан в файл: " + resultFile);
         return filePathBriteForce; //Можно не возвращать (переделать)
     }
-
 }

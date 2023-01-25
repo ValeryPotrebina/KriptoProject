@@ -1,55 +1,38 @@
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+package grafics;
 
+import servises.FileTypeFilter;
+import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
 public class JFilePicker extends JPanel {
-    private String textFieldLabel;
-    private String buttonLabel;
-
-    private JLabel label;
-    private JTextField textField;
-    private JButton button;
-
-    private JFileChooser fileChooser;
-
+    private final JTextField textField;
+    private final JFileChooser fileChooser;
     private int mode;
     public static final int MODE_OPEN = 1;
     public static final int MODE_SAVE = 2;
 
     public JFilePicker(String textFieldLabel, String buttonLabel, Integer columns) {
-        this.textFieldLabel = textFieldLabel;
-        this.buttonLabel = buttonLabel;
-
         fileChooser = new JFileChooser();
-
-        setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-
-        // creates the GUI
-        label = new JLabel(textFieldLabel);
         textField = new JTextField(columns);
-        button = new JButton(buttonLabel);
+        init(textFieldLabel, buttonLabel);
+    }
 
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                buttonActionPerformed(evt);
-            }
-        });
-
+    private void init(String textFieldLabel, String buttonLabel) {
+        setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        // creates the GUI
+        JLabel label = new JLabel(textFieldLabel);
+        JButton button = new JButton(buttonLabel);
+        button.addActionListener(evt -> buttonActionPerformed());
         add(label);
         add(textField);
         add(button);
-
     }
 
-    private void buttonActionPerformed(ActionEvent evt) {
+    private void buttonActionPerformed() {
         if (mode == MODE_OPEN) {
             if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
                 textField.setText(fileChooser.getSelectedFile().getAbsolutePath());

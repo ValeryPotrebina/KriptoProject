@@ -1,3 +1,4 @@
+import grafics.Grafics;
 import javax.swing.*;
 
 public class Main {
