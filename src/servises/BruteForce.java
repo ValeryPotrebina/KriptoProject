@@ -1,12 +1,15 @@
+package servises;
+
+import models.Word;
+
 import java.io.*;
 import java.util.ArrayList;
 
 
-public class BruteForce extends TextAnalyz{
+public class BruteForce extends TextAnalyz {
     public static final String PUNC_SUNB = ",:;.!?\"'";
     private static final String SPACE_SEPARATION = " ";
     static ArrayList<Word> words;
-
     static String str = " ";
     public static String bruteForce(String path) throws IOException {
         for (int i = 0; i < Encryption.RUSSIAN_ALPHABET.length(); i++) {
@@ -20,18 +23,18 @@ public class BruteForce extends TextAnalyz{
 
     private static boolean checkIsWordsCorrect(String text){
         boolean flag = true;
-        if (!checkNotNullText(text))
+        if (!TextAnalyz.checkNotNullText(text))
             return false;
         ArrayList<Word> words = splitTextOnWord(text);
-        if (!checkFirstLetterNotForbiddenLetter(words))
+        if (!TextAnalyz.checkFirstLetterNotForbiddenLetter(words))
             return false;
-        if (!checkNotMoreTTLettersInWord(words))
+        if (!TextAnalyz.checkNotMoreTTLettersInWord(words))
             return false;
-        if (!checkNotMoreFourConsonants(words))
+        if (!TextAnalyz.checkNotMoreFourConsonants(words))
             return false;
-        if (!checkNotMoreFourVowels(words))
+        if (!TextAnalyz.checkNotMoreFourVowels(words))
             return false;
-        if (!checkNotFirstLetterSmall(words))
+        if (!TextAnalyz.checkNotFirstLetterSmall(words))
             return false;
         return flag;
     }
@@ -44,7 +47,7 @@ public class BruteForce extends TextAnalyz{
             Word word = new Word(rawWord);
             words.add(word);
         }
-        return removeEmptyWords(words);
+        return TextAnalyz.removeEmptyWords(words);
     }
     private static String revoveAllPuncSymb(String text){
         boolean flag = true;
