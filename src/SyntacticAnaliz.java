@@ -1,10 +1,6 @@
-package servises;
-
-import servises.Encryption;
-
 import java.io.IOException;
 
-public class SyntacticAnaliz extends TextAnalyz {
+public class SyntacticAnaliz extends TextAnalyz{
     public static final int COMMON = -1;
     public static final int COLON = -4;
     public static final int SEMICOLON = -5;
@@ -16,7 +12,7 @@ public class SyntacticAnaliz extends TextAnalyz {
         boolean flag = true;
         if (!checkNotNullText(text))
             return false;
-        String alphabet = servises.Encryption.alphabetEncrypt(key);
+        String alphabet = Encryption.alphabetEncrypt(key);
         char separationSpace = getFrequentCharacter(getCountEachLetter(text));
         //int spaceIndex = alphabet.indexOf(separationSpace);
         int commonIndex = indexing(separationSpace, COMMON, key);
@@ -56,7 +52,7 @@ public class SyntacticAnaliz extends TextAnalyz {
                 "]";
 
         String newText = deleteSpaces(text);
-        models.Sentence[] sen = splitTextOnSentence(newText, sentenceSeparation);
+        Sentence[] sen = splitTextOnSentence(newText, sentenceSeparation);
 
         if (!checkFirstLetterStartWithUpperCase(sen))
             return false;

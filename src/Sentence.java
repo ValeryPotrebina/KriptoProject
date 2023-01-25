@@ -1,5 +1,3 @@
-package models;
-
 public class Sentence {
     String data;
 
