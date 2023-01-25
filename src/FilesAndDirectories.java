@@ -50,7 +50,7 @@ public class FilesAndDirectories {
         String date = formatForDateNow.format(dateNow);
         return str + "\\Decoded" + date + ".txt" ;
     }
-    public static String createFile(String str){
+    public static String createFileBF(String str){
         String fileName = makeFileName(str);
         Path path = Paths.get(fileName);
         if (!Files.exists(path)){

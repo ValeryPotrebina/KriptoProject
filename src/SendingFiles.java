@@ -31,7 +31,7 @@ public class SendingFiles {
     }
 
     public static String sendBruteForceMessage(String bruteForce) throws IOException {
-        String filePathBriteForce = FilesAndDirectories.createFile(directoryPath);
+        String filePathBriteForce = FilesAndDirectories.createFileBF(directoryPath);
         Path resultFile = Paths.get(filePathBriteForce);
         BufferedWriter writer = new BufferedWriter(new FileWriter(resultFile.toFile()));
         char[] resultArray = bruteForce.toCharArray();

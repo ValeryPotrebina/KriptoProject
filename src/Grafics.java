@@ -53,6 +53,7 @@ public class Grafics extends JFrame {
        button3.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
+
                makeWindow();
 
            }
@@ -80,6 +81,7 @@ public class Grafics extends JFrame {
                    frame.setVisible(false);
            }
        });
+       frame.setBackground(Color.cyan);
        frame.setVisible(true);
        return frame;
    }
@@ -98,7 +100,6 @@ public class Grafics extends JFrame {
        filePicker.addFileTypeFilter(".txt", "Текстовый файл"); // добавляем фильтр только по текстовым файлам
        JFileChooser fileChooser = filePicker.getFileChooser();
        fileChooser.setCurrentDirectory(new File("C:/"));
-
        panel.add(filePicker);
        panel.add(label2);
        panel.add(textField2);
@@ -129,7 +130,7 @@ public class Grafics extends JFrame {
        panel.add(result02);
        panel.add(result1);
        panel.add(result2);
-       frame.add(panel);
+       frame.getContentPane().add(panel);
        panel.setVisible(true);
    }
    public void interfaceOfBruteForse(JFrame frame){

@@ -1,11 +1,8 @@
 import javax.swing.*;
-import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args)  {
         JFrame.setDefaultLookAndFeelDecorated(true);
         new Grafics().start();
-        //Boba.getInfo();
-
     }
 }
