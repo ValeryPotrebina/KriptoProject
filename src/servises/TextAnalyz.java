@@ -8,6 +8,7 @@ import java.util.*;
 public class TextAnalyz {
     private static final String CONSONANTS = "бвгджзйклмнпрстфхцчшщ";
     private static final String VOWELS = "аеёиоуыэюя";
+
     /**
      * Проверка, что текст не пустой
      */
@@ -22,6 +23,7 @@ public class TextAnalyz {
         words.removeIf(word -> word.toString().length() == 0);
         return words;
     }
+
     /**
      * Проверка, что первая буква не является недопустимой
      */
@@ -30,7 +32,7 @@ public class TextAnalyz {
         for (Word word : words) {
             char firstLetter = word.toString().charAt(0);
             switch (firstLetter) {
-                case 'ы', 'ь', 'ъ', '.', ' ', '!', ',', ':', ';', '?', 'Ы': {
+                case 'ы', 'ь', 'ъ', '.', ' ', '!', ',', ':', ';', '?', 'Ы', 'Ъ', 'Ь': {
                     return false;
                 }
             }
@@ -47,6 +49,7 @@ public class TextAnalyz {
         }
         return true;
     }
+
     /**
      * Слова не могут чередоваться (большая - маленькая)
      */
@@ -60,24 +63,20 @@ public class TextAnalyz {
         }
         return flag;
     }
-    private static void checkSentenceEndWithPoint(Sentence[] sentences) {
 
-    }
-    private static void checkCommaBeforeConjunctions() {
-
-    }
 
     /**
-     *Проверка, что в слове не больше 4 согласных
+     * Проверка, что в слове не больше 4 согласных
      */
     protected static boolean checkNotMoreFourConsonants(ArrayList<Word> words) {
         boolean flag = true;
         for (Word word : words) {
-            for (int i = 0; i < word.letterCounter() - 3; i++) {
+            for (int i = 0; i < word.letterCounter() - 4; i++) {
                 if (isConsonants(word.toString().charAt(i)) &&
                         isConsonants(word.toString().charAt(i + 1)) &&
                         isConsonants(word.toString().charAt(i + 2)) &&
-                        isConsonants(word.toString().charAt(i + 3))){
+                        isConsonants(word.toString().charAt(i + 3)) &&
+                        isConsonants(word.toString().charAt(i + 4))) {
                     flag = false;
                     break;
                 }
@@ -85,7 +84,8 @@ public class TextAnalyz {
         }
         return flag;
     }
-    public static boolean isConsonants(char ch){
+
+    public static boolean isConsonants(char ch) {
         boolean flag = false;
         char[] cons = CONSONANTS.toCharArray();
         for (char con : cons) {
@@ -98,16 +98,17 @@ public class TextAnalyz {
     }
 
     /**
-     *Проверка, что в слове не больше 4 гласных
+     * Проверка, что в слове не больше 4 гласных
      */
     protected static boolean checkNotMoreFourVowels(ArrayList<Word> words) {
         boolean flag = true;
         for (Word word : words) {
-            for (int i = 0; i < word.letterCounter() - 3; i++) {
+            for (int i = 0; i < word.letterCounter() - 4; i++) {
                 if (isVoweels(word.toString().charAt(i)) &&
                         isVoweels(word.toString().charAt(i + 1)) &&
                         isVoweels(word.toString().charAt(i + 2)) &&
-                        isVoweels(word.toString().charAt(i + 3))){
+                        isVoweels(word.toString().charAt(i + 3)) &&
+                        isVoweels(word.toString().charAt(i + 4))) {
                     flag = false;
                     break;
                 }
@@ -115,7 +116,8 @@ public class TextAnalyz {
         }
         return flag;
     }
-    public static boolean isVoweels(char ch){
+
+    public static boolean isVoweels(char ch) {
         boolean flag = false;
         char[] cons = VOWELS.toCharArray();
         for (char con : cons) {
@@ -184,6 +186,14 @@ public class TextAnalyz {
         return flag;
     }
 
+    private static void checkSentenceEndWithPoint(Sentence[] sentences) {
+
+    }
+
+    private static void checkCommaBeforeConjunctions() {
+
+    }
+
     /**
      * пробел после запятой
      */
@@ -206,7 +216,6 @@ public class TextAnalyz {
     }
 
 
-
     /**
      * Разделяем предложения на слова
      */
@@ -221,9 +230,11 @@ public class TextAnalyz {
         }
         return removeEmptyWords(words);
     }
+
     private static long countOccurrences(String text, char ch) {
         return text.chars().filter(c -> c == ch).count();
     }
+
     private static String deleteSpaces(String text) {
         return text.trim();
     }

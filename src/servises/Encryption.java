@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class Encryption {
     public static final String ALP = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-    public static final String EXTRA_SUMB = ";:\"', .!?";
+    public static final String EXTRA_SUMB = "-;:\"', .!?";
     public static final String RUSSIAN_ALPHABET = ALP + ALP.toUpperCase() + EXTRA_SUMB;
     public static final int COUNT_LETTERS = RUSSIAN_ALPHABET.length();
 
@@ -16,7 +16,7 @@ public class Encryption {
         BufferedReader reader = new BufferedReader(new InputStreamReader(fileInputStream, StandardCharsets.UTF_8));
         char[] textArray = new char[fileInputStream.available()];
         int letter, i = 0;
-        while ((letter = reader.read()) != -1){
+        while ((letter = reader.read()) != -1) {
             textArray[i] = (char) letter;
             i++;
         }
@@ -31,7 +31,7 @@ public class Encryption {
         StringBuilder result = new StringBuilder();
         int countOfLetters = RUSSIAN_ALPHABET.length();
         for (char l : textArray) {
-            if (RUSSIAN_ALPHABET.indexOf(l) == -1){
+            if (RUSSIAN_ALPHABET.indexOf(l) == -1) {
                 result.append(l);
             } else {
                 oldIndex = RUSSIAN_ALPHABET.indexOf(l);
@@ -42,7 +42,7 @@ public class Encryption {
         return result.toString();
     }
 
-    public static String alphabetEncrypt(int key){
+    public static String alphabetEncrypt(int key) {
         char[] textArray = RUSSIAN_ALPHABET.toCharArray(); //<-todo исправить
         int oldIndex;
         int newIndex;

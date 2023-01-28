@@ -1,4 +1,4 @@
-package servises;
+package rubbish;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
