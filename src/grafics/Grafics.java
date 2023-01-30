@@ -35,22 +35,22 @@ public class Grafics extends JFrame {
         Toolkit toolkit = Toolkit.getDefaultToolkit(); //штука для работы с нашим приложением
         Dimension dimension = toolkit.getScreenSize(); //ширина и высота нашего экрана
         setBounds(dimension.width / 2 - (WIDTH / 2), dimension.height / 2 - (HEIGHT / 2), WIDTH, HEIGHT);
-        setTitle("MyApp");
+        setTitle("MyApp");//title better be set into variable
     }
 
     public void start() {
         new Grafics();
         JPanel panel = new JPanel();
-        JButton button1 = new JButton("Encrupt and Decrypt");
-        button1.setPreferredSize(new Dimension(450, 80));
-        JButton button2 = new JButton("Decrypt by Brute Force");
+        JButton button1 = new JButton("Encrupt and Decrypt");//all text fields better be in variables, in all places
+        button1.setPreferredSize(new Dimension(450, 80));//size for dimensions better be in variables
+        JButton button2 = new JButton("Decrypt by Brute Force");//the same
         button2.setPreferredSize(new Dimension(450, 80));
         JButton button3 = new JButton("Syntax Analyz");
         button3.setPreferredSize(new Dimension(450, 80));
         button1.addActionListener(e -> interfaceOfEncryption(makeWindow()));
         button2.addActionListener(e -> interfaceOfBruteForse(makeWindow()));
         button3.addActionListener(e -> makeWindow());
-        panel.add(button1);
+        panel.add(button1);//button names says nothing about their functionality, must be more infromative
         panel.add(button2);
         panel.add(button3);
         add(panel);
@@ -91,7 +91,7 @@ public class Grafics extends JFrame {
         filePicker.setMode(JFilePicker.MODE_SAVE);
         filePicker.addFileTypeFilter(".txt", "Текстовый файл"); // добавляем фильтр только по текстовым файлам
         JFileChooser fileChooser = filePicker.getFileChooser();
-        fileChooser.setCurrentDirectory(new File("C:/"));
+        fileChooser.setCurrentDirectory(new File("C:/"));//directory can be any, it would be better to get directory from method, not to hardcode
         panel.add(filePicker);
         panel.add(label2);
         panel.add(textField2);

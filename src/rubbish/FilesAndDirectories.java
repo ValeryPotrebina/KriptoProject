@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class FilesAndDirectories {
-    private static final String START_PATH = "c:\\resDir";
+    private static final String START_PATH = "c:\\resDir";//start path is hardcoded
 
     public static String makeDirName() {
         Date dateNow = new Date();

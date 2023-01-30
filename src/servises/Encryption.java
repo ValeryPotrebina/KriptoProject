@@ -44,7 +44,7 @@ public class Encryption {
 
     public static String alphabetEncrypt(int key) {
         char[] textArray = RUSSIAN_ALPHABET.toCharArray(); //<-todo исправить
-        int oldIndex;
+        int oldIndex;//TODO must be witten this way to be checked by intellijIdea
         int newIndex;
         StringBuilder result = new StringBuilder();
         for (char l : textArray) {
